@@ -8,12 +8,7 @@ import { useForm, FormProvider } from "react-hook-form";
 import { FormControl, FormDescription, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-
-// schema validation
-const formSchema = z.object({
-    email: z.string().email("Invalid email"),
-    password: z.string().min(8, "Password must be at least 8 characters").max(64),
-});
+import { formSchema } from "@/lib/auth-schema";
 
 // main component
 export default function SignInPage() {
