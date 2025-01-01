@@ -9,6 +9,8 @@ import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessa
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { signInFormSchema } from "@/lib/auth-schema";
+import { authClient } from "@/lib/auth-client";
+import { toast } from "@/hooks/use-toast";
 
 
 // main component
@@ -24,8 +26,25 @@ export default function SignInPage() {
     })
 
     // handle form submission
-    function onSubmit(values: z.infer<typeof signInFormSchema>) {
-        console.log(values)
+    async function onSubmit(values: z.infer<typeof signInFormSchema>) {
+        const { email, password } = values;
+        const { data, error } = await authClient.signIn.email({
+            email,
+            password,
+            callbackURL: "/",
+        },{
+            onRequest: (ctx) => {
+                toast({
+                    title: "Plase wait...",
+                })
+            },
+            onSuccess: (ctx) => {
+                form.reset();
+            },
+            onError: (ctx) => {
+                console.log("Error", ctx)
+            }
+        });
     }
 
     return (
