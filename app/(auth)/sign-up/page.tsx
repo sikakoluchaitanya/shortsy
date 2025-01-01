@@ -43,7 +43,14 @@ export default function SignUpPage() {
                 form.reset();
             },
             onError: (ctx) => {
-                console.log("Error", ctx)
+                toast({
+                    title: ctx.error.message,
+                    variant: "destructive"
+                })
+                form.setError("email", {
+                    type: "manual",
+                    message: ctx.error.message
+                })
             }
         });
     }
