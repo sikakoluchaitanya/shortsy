@@ -8,14 +8,15 @@ import { useForm, FormProvider } from "react-hook-form";
 import { FormControl, FormDescription, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { formSchema } from "@/lib/auth-schema";
+import { signInFormSchema } from "@/lib/auth-schema";
+
 
 // main component
 export default function SignInPage() {
 
     // initialize form
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
+    const form = useForm<z.infer<typeof signInFormSchema>>({
+        resolver: zodResolver(signInFormSchema),
         defaultValues: {
             email: "",
             password: "",
@@ -23,7 +24,7 @@ export default function SignInPage() {
     })
 
     // handle form submission
-    function onSubmit(values: z.infer<typeof formSchema>) {
+    function onSubmit(values: z.infer<typeof signInFormSchema>) {
         console.log(values)
     }
 
