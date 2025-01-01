@@ -5,7 +5,7 @@ import Link from "next/link";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, FormProvider } from "react-hook-form";
-import { FormControl, FormDescription, FormField, FormItem, FormLabel } from "@/components/ui/form";
+import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { formSchema } from "@/lib/auth-schema";
@@ -47,6 +47,7 @@ export default function SignUpPage() {
                                     <FormControl>
                                         <Input placeholder="Enter your name" {...field} />
                                     </FormControl>
+                                    <FormMessage/>
                                 </FormItem>
                             )}
                         />
@@ -61,6 +62,7 @@ export default function SignUpPage() {
                                     <FormControl>
                                         <Input placeholder="Enter your email" type="email" {...field} />
                                     </FormControl>
+                                    <FormMessage/>
                                 </FormItem>
                             )}
                         />
@@ -75,6 +77,7 @@ export default function SignUpPage() {
                                     <FormControl>
                                         <Input placeholder="Enter your password" type="password" {...field} />
                                     </FormControl>
+                                    <FormMessage/>
                                 </FormItem>
                             )}
                         />
